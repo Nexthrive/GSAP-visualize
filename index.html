@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Visualize GSAP TweenMax Bezier Curve</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="title">
+    <h1>GSAP Bezier Curve Viewer</h1>
+    <h3>Bezier curves in GSAP are hard to visualize - this should make things easier.</h3>  
+    <p>Notes 
+      <ul>
+        <li>"Thru" curves use the objects starting position as the first control point and go through successive points. They also have an additional "curviness" setting. </li>
+        <li>"Soft" curves use the objects starting position as the first control point and have two control points per anchor point.</li>
+        <li>"Quadratic" curves have one control point per anchor point (plus one starting point)</li>
+        <li>"Cubic" curves have two control points per anchor point (plus one starting point)</li>
+      </ul>
+    </p>
+  </div>
+
+  <div id="container">
+    <div id="content">
+      <div id="build-curve">
+        Select the curve type 
+        <select id="type">
+          <option value="thru">Thru (default)</option>
+          <option value="soft">Soft</option>
+          <option value="quadratic">Quadratic</option>
+          <option value="cubic">Cubic</option>
+        </select><br>
+        <button id="add-curve">Add a curve</button>
+        <button id="rem-curve" style="display: none;">Remove a curve</button>
+      </div>
+
+      <div id="controls">
+        Speed <input type="text" size="3em" id="speed" value="5" /><br>
+        Time Resolution <input type="text" size="3em" id="timeResolution" value="6" /><br>
+        <div class="hide-thru">Curviness <input type="text" size="3em" id="curviness" value="5" /><br></div>
+        Properties
+        <select id="properties">
+          <option value="leftTop">Left, Top</option>
+          <option value="xy">X, Y</option>
+        </select><br>
+        Start Paused <input type="checkbox" id="paused" checked />
+        Repeat <input type="checkbox" id="repeat" /><br>
+        Yoyo <input type="checkbox" id="yoyo" />
+        AutoRotate <input type="checkbox" id="autoRotate" /><br>
+        <button id="playBtn">Play</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="show-curve"></div>
+  <div id="show-points"></div>
+  <div id="goose"></div>
+
+  <div id="code-container">
+    <h3>Generated Code (ES6)</h3>
+    <pre id="code"></pre>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/utils/Draggable.min.js"></script>
+  <script src="https://www.blackthreaddesign.com/js/codepen/bt-tutorials.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
+
